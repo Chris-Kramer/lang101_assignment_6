@@ -22,7 +22,7 @@ local windows machine, you should run it from a bash emulator such as git bash.
 git clone https://github.com/Chris-Kramer/lang101_assignment_6.git
 ```  
 **Step 2 - Navigate to the assignment folder:**  
-- Navigate to the folder "lang101_assignment-6".  
+- Navigate to the folder "lang101_assignment_6".  
 ```console
 cd lang101_assignment_6
 ```  
