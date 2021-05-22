@@ -26,7 +26,6 @@ from tensorflow.keras.layers import (Dense, Embedding,
                                      Flatten, GlobalMaxPool1D, Conv1D)
 from tensorflow.keras.optimizers import SGD, Adam #Our optimizers (Adam er meget god og hurtig)
 from tensorflow.keras import backend as K
-from tensorflow.keras.utils import plot_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.regularizers import L2 #Regularization
@@ -333,9 +332,19 @@ def main():
     print("Summarizing model ....")
     #-------- Summarize model -------
     model.summary() # print summary
-    #plot model architecture
-    file_path = os.path.join("..", "output", "model_architecture.png")
-    plot_model(model, to_file = file_path, show_shapes=True, show_layer_names=True)
+    
+    
+    # Pydot (which is used for the function "plot_model") doesn't play well with windows
+    # So if there is an import error, I'm not saving the model summary as a picture
+    try:
+        # Import plot_model
+        from tensorflow.keras.utils import plot_model #Plotting 
+        #plot model architecture
+        file_path = os.path.join("..", "output", "model_architecture.png")
+        plot_model(model, to_file = file_path, show_shapes=True, show_layer_names=True)
+        
+    except ImportError:
+        print("Pydot not installed ... Skipping saving model architecture ...")
     
     #------- Train model on 20 epochs -------
     print("Training model ....")
