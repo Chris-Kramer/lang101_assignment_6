@@ -69,7 +69,7 @@ The parameters for cnn are the following:
 - `--batch_size` The batch size for training and evaluation.  
     - DEFAULT: 10  
 
-### EXAMPLE:  
+#### EXAMPLE:  
 _With bash script:_
 ```console
 bash run_cnn-GOT.sh --n_episodes 60 --test_size 0.1 --embedding_dim 50 --pretrained_embeddings glove.6B.50d.txt 
