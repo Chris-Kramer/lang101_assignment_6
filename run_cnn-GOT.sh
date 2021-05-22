@@ -26,17 +26,30 @@ echo "installing requirements"
 # test requirements.txt and install
 test -f requirements.txt && pip install -r requirements.txt
 
+# Move to data folder
+cd data/glove
+
+#Download and unzip glove data
+echo "downloading glove pre-trained data"
+wget http://nlp.stanford.edu/data/glove.6B.zip
+unzip -q glove.6B.zip
+
 # Move to source folder
-cd src
+cd ../../src
 
 #Run script
 echo "running script"
 python cnn-GOT.py $@
 
 # Deavtivate environment
-cd ..
 echo "deactivating and removing environment"
 deactivate
+
+#Remove glove data (So I can push repo to git)
+cd ../data/glove
+rm -rf glove.6B.zip
+rm -rf *.txt
+cd ../..
 
 # Remove virtual environment
 rm -rf $VENVNAME
