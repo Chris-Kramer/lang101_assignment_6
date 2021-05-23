@@ -33,7 +33,7 @@ def create_embedding_matrix(filepath, word_index, embedding_dim):
     vocab_size = len(word_index) + 1  # Adding again 1 because of reserved 0 index
     embedding_matrix = np.zeros((vocab_size, embedding_dim))
 
-    with open(filepath) as f:
+    with open(filepath, encoding="utf8") as f:
         for line in f:
             word, *vector = line.split()
             if word in word_index:

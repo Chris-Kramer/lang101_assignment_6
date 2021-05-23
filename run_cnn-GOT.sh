@@ -22,16 +22,27 @@ echo "Upgrading pip and installing dependencies"
 # I'm specifying that I'm using pip from python, since my pc have problems upgrading pip locally if I don't do it.
 python -m pip install --upgrade pip
 
-echo "installing requirements"
 # test requirements.txt and install
 test -f requirements.txt && pip install -r requirements.txt
 
+# Get glove embeddings
 # Move to data folder
 cd data/glove
 
-#Download and unzip glove data
-echo "downloading glove pre-trained data"
-wget http://nlp.stanford.edu/data/glove.6B.zip
+# test if it is windows or linx/mac
+if [ -d "../../$VENVNAME/bin" ]
+
+    then
+        #Download and unzip glove data with wget
+        echo "downloading glove pre-trained embeddings"
+        wget http://nlp.stanford.edu/data/glove.6B.zip
+    
+    else
+        #Download and unzip glove data with curl
+        echo "downloading glove pre-trained embeddings"
+        curl -kLSs http://nlp.stanford.edu/data/glove.6B.zip -o glove.6B.zip
+fi
+
 unzip -q glove.6B.zip
 
 # Move to source folder
