@@ -32,7 +32,7 @@ cd lang101_assignment_6
 bash run_cnn-GOT.sh
 ```  
 ### Running on windows without a bash emulator  
-If you're running on a local window machine, and don't have a bash emulator, you must set up a virtual environment, activate it, upgrade pip, install dependencies (requirements.txt). After this, you need to download and unzip the glove embeddings from http://nlp.stanford.edu/data/glove.6B.zip in the folder “glove” (which is located in the data folder). Then you can run the python script manually from the src folder. 
+If you're running on a local window machine, and don't have a bash emulator, you must set up a virtual environment, activate it, upgrade pip, install dependencies (requirements.txt). After this, you need to download and unzip the glove embeddings (glove.6B.zip) from https://nlp.stanford.edu/projects/glove/ in the folder “glove” (which is located in the data folder). Then you can run the python script manually from the src folder. 
 
 ### Output  
 The CNN model will print a classification report to the terminal, save a plot over its performance, and save a picture of its architecture in the folder “output”.  
